@@ -119,7 +119,7 @@ def main():
             
             # TRIGGER THE NEW BOT HANDS!
             if github_token and github_repo:
-                close_duplicate_issue(github_repo, current_issue_number, matched_issue_number, github_token)
+               flag_duplicate_issue(github_repo, current_issue_number, matched_issue_number, github_token)
             else:
                 print("⚠️ Skipping API closure: GITHUB_TOKEN or GITHUB_REPOSITORY missing.")
             return
