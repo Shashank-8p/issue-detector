@@ -26,7 +26,45 @@ GITHUB_EVENT_PATH=dummy_payload.json
 ```
 
 ### 5. Local Testing
-To test the AI logic without triggering GitHub Actions, create a `dummy_payload.json` file in your root folder mimicking a GitHub webhook payload, then run `python main.py`.
+
+GitHub Actions pass event data to scripts via a temporary JSON file. To test this bot locally without risking live repository infrastructure, we can "trick" the script by providing our own mock file. 
+
+*(Ensure you have set `GITHUB_EVENT_PATH=dummy_payload.json` in your local `.env` file before starting).*
+
+### 1. Create the Mock Payload
+Create a file named `dummy_payload.json` in your root folder and paste this mock issue data:
+
+```json
+{
+  "issue": {
+    "number": 99,
+    "title": "Login page not working",
+    "body": "Users cannot authenticate after entering credentials."
+  }
+}
+```
+
+### 2. Run the Engine (Test for "Unique")
+Execute the script in your terminal:
+```bash
+python main.py
+```
+**Expected Outcome:** Because this is the first time the bot has seen this text, it should calculate the embeddings, query Pinecone, fail to find a match, and print `[UNIQUE ISSUE] No severe duplicate detected.` It will then save this issue to your test database.
+
+### 3. Trigger a Duplicate (Test for "Match")
+To prove the AI works, open your `dummy_payload.json` file and slightly alter the wording to simulate a new user posting the same bug:
+
+```json
+{
+  "issue": {
+    "number": 100,
+    "title": "Cannot sign in to the platform",
+    "body": "The authentication system is broken when I type my password."
+  }
+}
+```
+
+Run `python main.py` one more time. 
 
 ## Pull Request Process
 1. Create a new branch: `git checkout -b feature/your-feature-name`
