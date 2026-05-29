@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Duplicate Issue Detector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #fafafa; }
+    </style>
+</head>
+<body class="text-gray-900 font-sans antialiased selection:bg-black selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
+        <span class="font-extrabold text-xl tracking-tight text-black">IssueDetector</span>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
+            <a href="#stack" class="hover:text-black transition-colors">Tech & Costs</a>
+            <a href="#pipeline" class="hover:text-black transition-colors">How it Works</a>
+            <a href="#installation" class="hover:text-black transition-colors">Integration</a>
+        </div>
+        <a href="https://github.com/Shashank-8p/issue-detector" target="_blank" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">GitHub &rarr;</a>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="mt-20 px-6 max-w-4xl mx-auto text-center flex flex-col items-center">
+            
+            <!-- Upgraded Pill Badge: Bigger, bolder, with hover lift and shadow -->
+            <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-gray-200 text-sm font-mono text-gray-600 mb-12 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:border-gray-300 transition-all duration-300 cursor-default">
+                <span class="w-2.5 h-2.5 rounded-full bg-black"></span>
+                open-source · practically free · zero maintenance
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[1.05] mb-8">
+                End the <br>
+                <span class="text-gray-300 transition-colors duration-700 hover:text-gray-400">Duplicate Issue</span> <br>
+                Triage Nightmare.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed mb-12">
+                An autonomous, cloud-native GitHub Action that leverages semantic embeddings and vector databases to identify duplicate bug reports. Bring your own keys; we handle the automation.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <a href="#installation" class="bg-black text-white font-medium px-8 py-3.5 rounded-full hover:bg-gray-800 hover:-translate-y-0.5 shadow-lg shadow-gray-200 transition-all duration-200">
+                    Integrate Now
+                </a>
+                <a href="https://github.com/Shashank-8p/issue-detector" target="_blank" class="bg-white text-black font-medium px-8 py-3.5 rounded-full border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors shadow-sm flex items-center gap-2">
+                    View Repository
+                </a>
+            </div>
+        </section>
+
+        <!-- The "Tech Stack & Cost" Grid -->
+        <section id="stack" class="pt-32 pb-16 max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">The Stack</p>
+                <h2 class="text-3xl font-black tracking-tight">Enterprise AI. Microscopic costs.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1: OpenAI -->
+                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] transition-all duration-300">
+                    <div class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2057 5.9847 5.9847 0 0 0 3.989-2.9 6.051 6.051 0 0 0-.7388-7.0732zM13.2599 22.5002c-1.2215 0-2.3482-.578-3.0483-1.5794l2.8427-1.6416h6.702l-1.921 3.3276h-.0004c-.3895.6263-1.0772 1.0183-1.8088 1.0183h-2.7662zm-6.1044-2.8398a4.57 4.57 0 0 1-1.5244-3.0645l1.4216-2.4627h6.702l-4.7077 8.1542h-.0004c-.655 0-1.2936-.2665-1.7616-.743l-1.551-1.551-1.551-1.551.9725-1.681-.9725-1.681zM2.8715 11.25H9.574l2.8425-4.923H2.8687a4.5168 4.5168 0 0 1-.0381-1.4216h.0004C2.5693 5.4851 3 6 3 6c.0004.2289.043.454.1245.6663l3.6558-6.3323.0004.0004a4.5422 4.5422 0 0 1 3.2384-2.2222h2.766c1.2215 0 2.3482.578 3.0483 1.5794L11.7766 5.253H5.0746L6.995 8.58 2.8715 11.25zm16.5574 3.0645-1.4216 2.4627H11.305l4.7077-8.1542h.0004c.655 0 1.2936.2665 1.7616.743l1.551 1.551 1.551 1.551-.9725 1.681.9725 1.681a4.5671 4.5671 0 0 1-1.5244 3.0645zm1.7001-5.7345H14.427l-2.8425 4.923h9.5476a4.5206 4.5206 0 0 1 .0381 1.4216h-.0004C21.4307 18.5149 21 18 21 18c-.0004-.2289-.043-.454-.1245-.6663l-3.6558 6.3323-.0004-.0004a4.5422 4.5422 0 0 1-3.2384 2.2222h-2.766c-1.2215 0-2.3482-.578-3.0483-1.5794l6.0567-10.4877h6.702l-1.9205-3.3276-2.1235 3.6778-2.1235 3.6778zM12 14.1599a2.1599 2.1599 0 1 1 0-4.3198 2.1599 2.1599 0 0 1 0 4.3198z"/></svg>
+                        OpenAI API
+                    </div>
+                    <div class="flex items-baseline gap-1 mt-4 mb-2">
+                        <span class="text-4xl font-black tracking-tighter">~$0.0001</span>
+                        <span class="text-gray-500 font-medium text-sm">/ issue</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mt-4">
+                        Uses <code class="text-xs bg-gray-50 border border-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono">text-embedding-3-small</code>. Processing a massive 4,000-word issue costs a fraction of a single cent.
+                    </p>
+                </div>
+
+                <!-- Card 2: Pinecone -->
+                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] transition-all duration-300">
+                    <div class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                        <!-- Replaced Emoji with sleek SVG Lightning Bolt -->
+                        <svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        Pinecone DB
+                    </div>
+                    <div class="flex items-baseline gap-1 mt-4 mb-2">
+                        <span class="text-4xl font-black tracking-tighter">2M</span>
+                        <span class="text-gray-500 font-medium text-sm">vectors / free</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mt-4">
+                        Lightning-fast cosine similarity search. The Serverless Free Tier holds up to 2,000,000 issues forever without a credit card.
+                    </p>
+                </div>
+
+                <!-- Card 3: GitHub Actions -->
+                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] transition-all duration-300">
+                    <div class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        GitHub Actions
+                    </div>
+                    <div class="flex items-baseline gap-1 mt-4 mb-2">
+                        <span class="text-4xl font-black tracking-tighter">Free</span>
+                        <span class="text-gray-500 font-medium text-sm">on public</span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed mt-4">
+                        Containerized execution runs natively in your repository. Zero external servers to manage, deploy, or maintain.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: The "How It Works" Data Pipeline Section -->
+        <section id="pipeline" class="py-16 max-w-5xl mx-auto px-6 border-t border-gray-100">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black tracking-tight">The Data Pipeline</h2>
+                <p class="text-gray-500 mt-3 max-w-2xl mx-auto">See exactly how the engine processes data from the moment a user hits "Submit new issue."</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">1</div>
+                    <!-- Hidden dashed line for desktop connector -->
+                    <div class="hidden md:block absolute top-5 left-12 w-full h-[1px] border-t-2 border-dashed border-gray-200 -z-10"></div>
+                    
+                    <h3 class="font-bold text-lg mb-2 text-gray-900">Smart Extraction</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        The bot extracts up to <strong class="text-gray-800">4,000 words</strong> from the issue Title and Body. Built-in regex automatically strips out markdown and massive code blocks, ensuring the AI evaluates only the core human intent.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">2</div>
+                    <div class="hidden md:block absolute top-5 left-12 w-full h-[1px] border-t-2 border-dashed border-gray-200 -z-10"></div>
+                    
+                    <h3 class="font-bold text-lg mb-2 text-gray-900">Semantic Translation</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        The cleaned text is sent securely to OpenAI, which converts the vocabulary into a <strong class="text-gray-800">1,536-dimensional coordinate vector</strong>. This neutralizes differences in wording (e.g., "log in" vs. "authentication").
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">3</div>
+                    
+                    <h3 class="font-bold text-lg mb-2 text-gray-900">Search & Flag</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Pinecone executes a Cosine Similarity search against your repository's memory index. If a past issue matches with <strong class="text-gray-800">> 65% similarity</strong>, the bot posts a friendly comment flagging it for human review.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Integration Section -->
+        <section id="installation" class="py-24 max-w-4xl mx-auto px-6 mb-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-black tracking-tight mb-4">Ready to automate your repo?</h2>
+                <p class="text-gray-500 text-lg">Copy this workflow into <code class="bg-gray-100 border border-gray-200 px-2 py-1 rounded-md text-sm text-gray-800 font-mono">.github/workflows/duplicate-checker.yml</code> to activate the AI.</p>
+            </div>
+            
+            <!-- The Hoverable Pale Code Block -->
+            <div class="bg-[#fcfcfc] rounded-3xl border border-gray-100 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out">
+                
+                <!-- Window Header -->
+                <div class="bg-white px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                        <span class="ml-4 text-xs font-mono text-gray-400">.github/workflows/duplicate-checker.yml</span>
+                    </div>
+                </div>
+                
+                <!-- Pale Syntax Highlighting -->
+                <pre class="p-8 overflow-x-auto text-sm font-mono text-gray-600 leading-[1.7] bg-[#fcfcfc]"><code><span class="text-pink-500">name:</span> Issue Duplicate Checker
+
+<span class="text-blue-500">on:</span>
+  <span class="text-blue-500">issues:</span>
+    <span class="text-blue-500">types:</span> [opened, edited]
+
+<span class="text-pink-500">jobs:</span>
+  <span class="text-blue-500">check-duplicates:</span>
+    <span class="text-pink-500">runs-on:</span> ubuntu-latest
+    <span class="text-pink-500">permissions:</span>
+      <span class="text-blue-500">issues:</span> write
+      
+    <span class="text-pink-500">steps:</span>
+      - <span class="text-pink-500">name:</span> Checkout Repository
+        <span class="text-pink-500">uses:</span> actions/checkout@v4
+
+      - <span class="text-pink-500">name:</span> Run AI Duplicate Detector
+        <span class="text-pink-500">uses:</span> Shashank-8p/issue-detector@main
+        <span class="text-pink-500">with:</span>
+          <span class="text-blue-500">openai_api_key:</span> ${{ secrets.OPENAI_API_KEY }}
+          <span class="text-blue-500">pinecone_api_key:</span> ${{ secrets.PINECONE_API_KEY }}
+          <span class="text-blue-500">pinecone_index_name:</span> ${{ secrets.PINECONE_INDEX_NAME }}
+          <span class="text-blue-500">github_token:</span> ${{ secrets.GITHUB_TOKEN }}</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 py-12 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center text-gray-400 text-sm flex flex-col items-center gap-2">
+            <p>Released under the MIT License.</p>
+            <p>Developed by <a href="https://github.com/Shashank-8p" class="text-gray-600 font-medium hover:text-black transition-colors">Shashank Pathak</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
