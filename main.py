@@ -41,10 +41,10 @@ def main():
     pinecone_key = os.getenv("PINECONE_API_KEY")
     index_name = os.getenv("PINECONE_INDEX_NAME")
     github_token = os.getenv("GITHUB_TOKEN")
-    github_repo = os.getenv("GITHUB_REPOSITORY") # Automatically provided by GitHub Actions
+    github_repo = os.getenv("GITHUB_REPOSITORY") 
 
     if not openai_key or not pinecone_key or not index_name:
-        print("❌ Error: Missing required configuration environment variables.")
+        print("Error: Missing required configuration environment variables.")
         return
 
     openai_client = OpenAI(api_key=openai_key)
@@ -53,7 +53,7 @@ def main():
 
     event_path = os.getenv("GITHUB_EVENT_PATH")
     if not event_path:
-        print("❌ Error: GITHUB_EVENT_PATH not found.")
+        print("Error: GITHUB_EVENT_PATH not found.")
         return
 
     try:
@@ -61,7 +61,7 @@ def main():
             payload = json.load(file)
             
         if "issue" not in payload:
-             print("ℹ️ Event is not an issue. Exiting smoothly.")
+             print("Event is not an issue. Exiting smoothly.")
              return
              
         issue_data = payload["issue"]
@@ -71,17 +71,17 @@ def main():
         raw_body = issue_data["body"]
         
     except Exception as e:
-        print(f"❌ Data Extraction Error: {e}")
+        print(f"Data Extraction Error: {e}")
         return
 
-    print(f"📋 Processing {issue_id}: '{issue_title}'")
+    print(f"Processing {issue_id}: '{issue_title}'")
 
-    code_block_pattern = r'```[\s\S]*?```'
+    code_block_pattern = r'```[\s\S]*?```' #from description removing any codeblocks
     clean_body = re.sub(code_block_pattern, "", raw_body) if raw_body else ""
     text_to_embed = f"Title: {issue_title} | Description: {clean_body}"
-    safe_text = text_to_embed[:4000] 
+    safe_text = text_to_embed[:4000] #only keeping start 4k words and discarding the rest
 
-    print("🧠 Computing mathematical vector context...")
+    print("Computing mathematical vector context...")
     try:
         embedding_response = openai_client.embeddings.create(
             input=safe_text,
@@ -89,14 +89,14 @@ def main():
         )
         issue_vector = embedding_response.data[0].embedding
     except Exception as e:
-        print(f"❌ OpenAI API Error: {e}")
+        print(f"OpenAI API Error: {e}")
         return
 
-    print("🔍 Scanning vector memory for existing duplicates...")
+    print("Scanning vector memory for existing duplicates...")
     try:
         query_response = pinecone_index.query(vector=issue_vector, top_k=2, include_metadata=True)
     except Exception as e:
-        print(f"❌ Pinecone Query Error: {e}")
+        print(f"Pinecone Query Error: {e}")
         return
 
     matches = query_response.get("matches", [])
@@ -108,33 +108,33 @@ def main():
         metadata = best_match.get("metadata") or {}
         matched_title = metadata.get("title", "Unknown Title")
         
-        # Extract the integer number from the matched ID (e.g., "issue-1" -> "1")
+        # Extract the integer number from the matched ID
         matched_issue_number = best_match['id'].split('-')[1]
 
-        print(f"\n📊 Highest match score found: {similarity_score:.4f}")
+        print(f"\nHighest match score found: {similarity_score:.4f}")
 
         if similarity_score >= DUPLICATE_THRESHOLD:
-            print("🛑 [MATCH FOUND] This issue appears to be a duplicate!")
-            print(f"🔗 Matches existing item: {best_match['id']} ('{matched_title}')")
+            print("[MATCH FOUND] This issue appears to be a duplicate!")
+            print(f"Matches existing item: {best_match['id']} ('{matched_title}')")
             
             # TRIGGER THE NEW BOT HANDS!
             if github_token and github_repo:
                flag_duplicate_issue(github_repo, current_issue_number, matched_issue_number, github_token)
             else:
-                print("⚠️ Skipping API closure: GITHUB_TOKEN or GITHUB_REPOSITORY missing.")
+                print("Skipping API closure: GITHUB_TOKEN or GITHUB_REPOSITORY missing.")
             return
 
-    print("✨ [UNIQUE ISSUE] No severe duplicate detected.")
-    print("📤 Saving vector coordinates to database memory for future references...")
+    print("[UNIQUE ISSUE] No severe duplicate detected.")
+    print("Saving vector coordinates to database memory for future references...")
     try:
         pinecone_index.upsert(vectors=[{
             "id": issue_id,
             "values": issue_vector,
             "metadata": {"title": issue_title}
         }])
-        print("✅ Unique issue successfully registered in memory.")
+        print("Unique issue successfully registered in memory.")
     except Exception as e:
-        print(f"❌ Pinecone Upsert Error: {e}")
+        print(f"Pinecone Upsert Error: {e}")
 
 if __name__ == "__main__":
     main()
