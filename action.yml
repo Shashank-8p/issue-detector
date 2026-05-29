@@ -1,0 +1,22 @@
+name: 'AI Duplicate Issue Detector'
+description: 'Uses OpenAI and Pinecone Vector DB to automatically flag duplicate issues.'
+
+inputs:
+  openai_api_key:
+    description: 'OpenAI API Key'
+    required: true
+  pinecone_api_key:
+    description: 'Pinecone API Key'
+    required: true
+  pinecone_index_name:
+    description: 'Pinecone Index Name'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    # This maps the YAML inputs into the OS Environment Variables your Python script is looking for
+    OPENAI_API_KEY: ${{ inputs.openai_api_key }}
+    PINECONE_API_KEY: ${{ inputs.pinecone_api_key }}
+    PINECONE_INDEX_NAME: ${{ inputs.pinecone_index_name }}
