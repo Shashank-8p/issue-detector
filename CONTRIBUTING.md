@@ -10,4 +10,5 @@ To work on this Action locally, you will need to set up a Python virtual environ
 2. **Create a Virtual Environment:**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows use: .\venv\Scripts\activate
+   source venv/bin/activate  # On MacOS & Linux
+   # On Windows use: .\venv\Scripts\activate
