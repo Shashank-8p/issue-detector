@@ -10,7 +10,7 @@ load_dotenv()
 
 # Global Configuration Threshold
 # 0.85 means the issues must be roughly 85% semantically identical to flag as a duplicate
-DUPLICATE_THRESHOLD = 0.85
+DUPLICATE_THRESHOLD = 0.70
 
 def main():
     print("🚀 Initializing AI Duplicate Detection Engine...\n")
