@@ -8,6 +8,8 @@ on:
 jobs:
   check-duplicates:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       # Step 1: Check out the code in the repository
       - name: Checkout Code
