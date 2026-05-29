@@ -83,8 +83,10 @@ GitHub Comment Notification
 issue-detector/
 │
 ├── .github/
-│   └── workflows/
-│       └── duplicate-checker.yml
+├── workflows/
+│   └── duplicate-checker.yml     
+└── ISSUE_TEMPLATE/               
+    └── bug_report.yml    # file for the issue form
 ├── .gitignore            # Ignored files and folders
 ├── action.yml            # Defines the GitHub Action inputs/outputs
 ├── CONTRIBUTING.md       # Open source contribution guidelines
