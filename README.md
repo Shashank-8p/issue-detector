@@ -83,18 +83,18 @@ GitHub Comment Notification
 issue-detector/
 │
 ├── .github/
-├── workflows/
-│   └── duplicate-checker.yml     
-└── ISSUE_TEMPLATE/               
-    └── bug_report.yml    # file for the issue form
-├── .gitignore            # Ignored files and folders
-├── action.yml            # Defines the GitHub Action inputs/outputs
-├── CONTRIBUTING.md       # Open source contribution guidelines
-├── Dockerfile            # Container configuration
-├── LICENSE               # MIT License
-├── main.py               # Core application logic
-├── README.md             # Project documentation
-└── requirements.txt      # Python dependencies
+│   ├── workflows/
+│   │   └── duplicate-checker.yml 
+│   └── ISSUE_TEMPLATE/               
+│       └── bug_report.yml        # file for the issue form
+├── .gitignore                    # Ignored files and folders
+├── action.yml                    # Defines the GitHub Action inputs/outputs
+├── CONTRIBUTING.md               # Open source contribution guidelines
+├── Dockerfile                    # Container configuration
+├── LICENSE                       # MIT License
+├── main.py                       # Core application logic
+├── README.md                     # Project documentation
+└── requirements.txt              # Python dependencies
 ```
 
 ---
