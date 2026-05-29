@@ -18,16 +18,20 @@ def close_duplicate_issue(repo, current_issue_num, matched_issue_num, token):
     }
     
     # 1. Post the explanatory comment
+def flag_duplicate_issue(repo, current_issue_num, matched_issue_num, token):
+    url = f"https://api.github.com/repos/{repo}/issues/{current_issue_num}"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    
+    # 1. Post the helpful, non-destructive comment
     comment_url = f"{url}/comments"
     comment_body = {
-        "body": f"🤖 **AI Duplicate Detector**\n\nI have detected that this issue is a duplicate of #{matched_issue_num}. I am automatically closing this to keep the project backlog clean!"
+        "body": f"👋 **Beep boop! AI Duplicate Assistant here.**\n\nI noticed this issue looks highly similar to #{matched_issue_num}. \n\nCould a human maintainer or the original author check to see if this is a duplicate? If so, feel free to close this out!"
     }
     requests.post(comment_url, headers=headers, json=comment_body)
-    
-    # 2. Close the issue
-    close_data = {"state": "closed"}
-    requests.patch(url, headers=headers, json=close_data)
-    print("✅ Issue successfully commented on and closed via API.")
+    print("✅ Issue successfully flagged via API.")
 
 def main():
     print("🚀 Initializing AI Duplicate Detection Engine...\n")
