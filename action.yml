@@ -11,15 +11,15 @@ inputs:
   pinecone_index_name:
     description: 'Pinecone Index Name'
     required: true
-  github_token: 
-    description: 'The automatically generated GitHub Token for API calls'
+  github_token:
+    description: 'GitHub token to close issues'
     required: true
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    # This maps the YAML inputs into the OS Environment Variables your Python script is looking for
     OPENAI_API_KEY: ${{ inputs.openai_api_key }}
     PINECONE_API_KEY: ${{ inputs.pinecone_api_key }}
     PINECONE_INDEX_NAME: ${{ inputs.pinecone_index_name }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}

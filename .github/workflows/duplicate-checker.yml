@@ -1,6 +1,5 @@
 name: Issue Duplicate Checker
 
-# Wake up whenever a new issue is opened or edited
 on:
   issues:
     types: [opened, edited]
@@ -8,17 +7,18 @@ on:
 jobs:
   check-duplicates:
     runs-on: ubuntu-latest
+    
     permissions:
-      issues: write
+      issues: write 
+      
     steps:
-      # Step 1: Check out the code in the repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Run your custom Docker Action!
       - name: Run AI Detector
-        uses: ./ # This tells GitHub to look in the current directory for the action.yml
+        uses: ./ 
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           pinecone_api_key: ${{ secrets.PINECONE_API_KEY }}
           pinecone_index_name: ${{ secrets.PINECONE_INDEX_NAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
