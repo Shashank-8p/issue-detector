@@ -247,7 +247,7 @@ jobs:
           pinecone_index_name: ${{ secrets.PINECONE_INDEX_NAME }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
-
+*************
 ---
 
 ## 🔍 How It Works
